@@ -57,7 +57,16 @@ namespace ViewPoints.ViewModels
         private async void ExportCommand_Execute()
         {
             var manager = new ViewPointManager();
-            await manager.SaveViewPoints(viewPointsData, GetDocumentsPath(), ViewPointsDefaultFilename);
+            var docPath = GetDocumentsPath();
+            try
+            {
+                await manager.SaveViewPoints(viewPointsData, docPath, ViewPointsDefaultFilename);
+                DependencyService.Get<IToast>().ShowToast($"Soubor {ViewPointsDefaultFilename} byl uložen do {docPath}.", Length.Long);
+            }
+            catch (Exception)
+            {
+                DependencyService.Get<IToast>().ShowToast("Uložení se nepodařilo.", Length.Long);
+            }
         }
 
         private string GetInternalPath()

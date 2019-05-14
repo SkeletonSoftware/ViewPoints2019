@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="DependencyServices\PathHelper.cs" />
     <Compile Include="DependencyServices\Settings.cs" />
+    <Compile Include="DependencyServices\ToastImpl.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
